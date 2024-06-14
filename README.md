@@ -16,7 +16,7 @@
 
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Mopups.svg)](https://www.nuget.org/packages/Mopups/)
 [![nuget](https://img.shields.io/nuget/v/Mopups.svg)](https://www.nuget.org/packages/Mopups/)
-* [Contributing](#updating-the-nuget-package)
+* [Contributing](#contributing)
 * [About the Project](#about-the-project)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
@@ -25,8 +25,8 @@
 * [Contact](#contact)
 
 <!-- Koble instructions -->
-## Updating the nuget package
-This project lives in Kobles custom nuget feed. To update it, follow documentation to push a new version to the nuget feed.
+## Contributing
+The nuget package for this project lives in Kobles custom nuget feed. To update it, follow documentation to push a new version to the nuget feed.
 Make sure you get approval from 2 reviewers of your code before you push
 
 <!-- ABOUT THE PROJECT -->
