@@ -10,14 +10,13 @@
   </p>
 </p>
 
-
-
 <!-- TABLE OF CONTENTS -->
 
 ## Table of Contents
 
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Mopups.svg)](https://www.nuget.org/packages/Mopups/)
 [![nuget](https://img.shields.io/nuget/v/Mopups.svg)](https://www.nuget.org/packages/Mopups/)
+* [Contributing](#updating-the-nuget-package)
 * [About the Project](#about-the-project)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
@@ -25,10 +24,14 @@
 * [License](#license)
 * [Contact](#contact)
 
-
+<!-- Koble instructions -->
+## Updating the nuget package
+This project lives in Kobles custom nuget feed. To update it, follow documentation to push a new version to the nuget feed.
+Make sure you get approval from 2 reviewers of your code before you push
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+Koble Mopups is a fork of Mopups (see below). We wanted to fix bugs and be able to Kobleize mopups easily.
 
 Mopups is a replacement for the "Rg.Plugins.Popups" plugin for Xamarin. Mopups intends to provide a similar experience to this plugin, however also clean up the code base and provide forward looking enhancements. Developers familar with the original plugin should find it a smooth transition, but we do recommend reading the wiki and reaching out with any issues.
 
