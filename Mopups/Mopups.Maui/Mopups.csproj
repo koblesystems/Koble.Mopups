@@ -9,9 +9,9 @@
 		<UseMaui>true</UseMaui>
 		<UseMauiEssentials>true</UseMauiEssentials>
 		<SingleProject>true</SingleProject>
-		<PackageId>Mopups</PackageId>
-		<Description>Popups for MAUI</Description>
-		<PackageProjectUrl>https://github.com/LuckyDucko/Mopups</PackageProjectUrl>
+		<PackageId>Koble.Mopups</PackageId>
+		<Description>Koblized Mopups for MAUI</Description>
+		<PackageProjectUrl>https://github.com/koblesystems/Koble.Mopups</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
@@ -24,14 +24,12 @@
 		<UseInterpreter Condition="$(TargetFramework.Contains('-android'))">False</UseInterpreter>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<Authors>Tyson Hooker,Maksym Koshovyi,Aswin P G, Kirill Lyubimov, Martijn Van Dijk, Shane Neuville</Authors>
+		<Authors>Tyson Hooker,Maksym Koshovyi,Aswin P G, Kirill Lyubimov, Martijn Van Dijk, Shane Neuville,Daniel Glick</Authors>
 		<Company>$(CompanyName)</Company>
 		<PackageTags>Mopups;Popups;Maui;rg;Xamarin;ios;android;Windows;MacOS;Mopups;Dialogs;macos;windows</PackageTags>
-		<Version>1.3.0</Version>
+		<Version>1.3.2</Version>
 		<Title>Mopups (Maui Popups)</Title>
-		<PackageReleaseNotes>Added in several fixes from the community (THANKYOU!)
-
-Upgraded to .NET 8</PackageReleaseNotes>
+		<PackageReleaseNotes>Fixed an issue where removing a descendant on a popup page would crash the app on iOS</PackageReleaseNotes>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishAot>True</PublishAot>
