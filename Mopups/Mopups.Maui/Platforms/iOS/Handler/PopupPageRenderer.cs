@@ -40,9 +40,12 @@ namespace Mopups.Platforms.iOS
 
         protected override void Dispose(bool disposing)
         {
+            if(_isDisposed)
+                return;
+
             if (disposing)
             {
-                _renderer.ViewController.View?.RemoveGestureRecognizer(_tapGestureRecognizer);
+                _renderer?.ViewController?.View?.RemoveGestureRecognizer(_tapGestureRecognizer);
                 _renderer = null; 
             }
 
