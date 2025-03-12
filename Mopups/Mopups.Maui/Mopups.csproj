@@ -27,9 +27,9 @@
 		<Authors>Tyson Hooker,Maksym Koshovyi,Aswin P G, Kirill Lyubimov, Martijn Van Dijk, Shane Neuville,Daniel Glick</Authors>
 		<Company>$(CompanyName)</Company>
 		<PackageTags>Mopups;Popups;Maui;rg;Xamarin;ios;android;Windows;MacOS;Mopups;Dialogs;macos;windows</PackageTags>
-		<Version>1.3.4</Version>
+		<Version>1.3.5</Version>
 		<Title>Mopups (Maui Popups)</Title>
-		<PackageReleaseNotes>Fixed a potential null reference on dispose</PackageReleaseNotes>
+		<PackageReleaseNotes>Fixed issue with popups appearing behind modal pages</PackageReleaseNotes>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishAot>True</PublishAot>
