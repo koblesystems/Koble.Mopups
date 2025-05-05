@@ -19,6 +19,8 @@ namespace Mopups.Platforms.iOS
         private NSObject? _willChangeFrameNotificationObserver;
         private NSObject? _willHideNotificationObserver;
         private bool _isDisposed;
+        private NSObject? _constructorKeyboardWillShow;
+        private NSObject? _constructorKeyboardWillHide;
 
         internal CGRect KeyboardBounds { get; private set; } = CGRect.Empty;
 
@@ -32,6 +34,20 @@ namespace Mopups.Platforms.iOS
             {
                 CancelsTouchesInView = false
             };
+            SubscribeKeyboardEvents();
+        }
+
+        private void SubscribeKeyboardEvents()
+        {
+            _constructorKeyboardWillShow = UIKeyboard.Notifications.ObserveWillShow((sender, args) =>
+            {
+                KeyboardBounds = args.FrameBegin;
+            });
+
+            _constructorKeyboardWillHide = UIKeyboard.Notifications.ObserveWillHide(async (sender, args) =>
+            {
+                KeyboardBounds = CGRect.Empty;
+            });
         }
 
         public PopupPageRenderer(IntPtr handle) : base(handle)
@@ -40,13 +56,13 @@ namespace Mopups.Platforms.iOS
 
         protected override void Dispose(bool disposing)
         {
-            if(_isDisposed)
+            if (_isDisposed)
                 return;
 
             if (disposing)
             {
                 _renderer?.ViewController?.View?.RemoveGestureRecognizer(_tapGestureRecognizer);
-                _renderer = null; 
+                _renderer = null;
             }
 
             base.Dispose(disposing);
@@ -166,12 +182,17 @@ namespace Mopups.Platforms.iOS
 
         private void UnregisterAllObservers()
         {
-            
             _willChangeFrameNotificationObserver?.Dispose();
             _willHideNotificationObserver?.Dispose();
 
             _willChangeFrameNotificationObserver = null;
             _willHideNotificationObserver = null;
+
+            _constructorKeyboardWillShow?.Dispose();
+            _constructorKeyboardWillShow = null;
+
+            _constructorKeyboardWillHide?.Dispose();
+            _constructorKeyboardWillHide = null;
         }
 
         public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations()
