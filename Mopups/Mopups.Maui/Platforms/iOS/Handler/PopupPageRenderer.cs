@@ -50,10 +50,6 @@ namespace Mopups.Platforms.iOS
             });
         }
 
-        public PopupPageRenderer(IntPtr handle) : base(handle)
-        {
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (_isDisposed)
@@ -65,10 +61,15 @@ namespace Mopups.Platforms.iOS
                 _renderer = null;
             }
 
+            _constructorKeyboardWillShow?.Dispose();
+            _constructorKeyboardWillShow = null;
+
+            _constructorKeyboardWillHide?.Dispose();
+            _constructorKeyboardWillHide = null;
+
             base.Dispose(disposing);
             _isDisposed = true;
         }
-
 
         private void OnTap(UITapGestureRecognizer e)
         {
@@ -93,7 +94,7 @@ namespace Mopups.Platforms.iOS
 
             void UpdateSize(PopupPageRenderer handler)
             {
-                var currentElement = ((PopupPage)Handler.VirtualView);
+                var currentElement = (PopupPage)Handler.VirtualView;
 
                 if (handler.Handler.PlatformView?.Superview?.Frame == null || currentElement == null)
                     return;
@@ -143,6 +144,9 @@ namespace Mopups.Platforms.iOS
 
             UnregisterAllObservers();
 
+            if (KeyboardBounds != CGRect.Empty)
+                ViewDidLayoutSubviews();
+
             _willChangeFrameNotificationObserver = UIKeyboard.Notifications.ObserveWillShow((sender, args) =>
             {
                 KeyboardBounds = args.FrameBegin;
@@ -183,16 +187,10 @@ namespace Mopups.Platforms.iOS
         private void UnregisterAllObservers()
         {
             _willChangeFrameNotificationObserver?.Dispose();
-            _willHideNotificationObserver?.Dispose();
-
             _willChangeFrameNotificationObserver = null;
+
+            _willHideNotificationObserver?.Dispose();
             _willHideNotificationObserver = null;
-
-            _constructorKeyboardWillShow?.Dispose();
-            _constructorKeyboardWillShow = null;
-
-            _constructorKeyboardWillHide?.Dispose();
-            _constructorKeyboardWillHide = null;
         }
 
         public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations()
